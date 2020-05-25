@@ -1,0 +1,19 @@
+rm-vnc-server.service 
+[Unit]
+Description=reMarkable VNC service
+StartLimitIntervalSec=600
+StartLimitBurst=4
+Requires=xochitl.service
+After=xochitl.service
+
+[Service]
+ExecStartPre=-/sbin/insmod /opt/rm-vnc-server/mxc_epdc_fb_damage.ko
+# wait sometime or the screen will be garbled; TODO: figure out better
+# dependency
+ExecStartPre=/bin/sleep 60
+ExecStart=/opt/rm-vnc-server/rM-vnc-server
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
