@@ -26,6 +26,6 @@ build/rM1-vnc-server: private override LDFLAGS += -Wl,-Bstatic -lvncserver -Wl,-
 build/rM1-vnc-server-standalone: build/vncs.o build/backend.o build/backend-mxc-standalone.o
 build/rM1-vnc-server-standalone: private override LDFLAGS += -lvncserver -lz -lpthread -lrM-input-devices-standalone -ludev
 build/rM2-vnc-server: build/vncs.o build/backend.o build/backend-qsg.o
-build/rM2-vnc-server: private override LDFLAGS += -Wl,-Bstatic -lvncserver -Wl,-Bdynamic -lqsgepaper-snoop -lz -lpthread -lrM-input-devices
+build/rM2-vnc-server: private override LDFLAGS += -Wl,-Bstatic -lvncserver -Wl,-Bdynamic -lqsgepaper-snoop -lz -lpthread -lrM-input-devices -lsystemd
 build/rM2-vnc-server-standalone: build/vncs.o build/backend.o build/backend-qsg.o
-build/rM2-vnc-server-standalone: private override LDFLAGS += -lvncserver -lqsgepaper-snoop-standalone -lz -lpthread -lcrypto -llzma -lrM-input-devices-standalone -ludev
+build/rM2-vnc-server-standalone: private override LDFLAGS += -lvncserver -lqsgepaper-snoop-standalone -lz -lpthread -lcrypto -llzma -lrM-input-devices-standalone -ludev -lsystemd
