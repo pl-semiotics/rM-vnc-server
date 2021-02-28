@@ -14,8 +14,8 @@ stdenv.mkDerivation {
     libqsgepaper-snoop
     rM-input-devices.dev
   ];
-  REMARKABLE_VERSION = targetPlatform.platform.rmVersion;
-  MXC_EPDC_FB_DAMAGE_KO = if targetPlatform.platform.rmVersion == 1
+  REMARKABLE_VERSION = targetPlatform.rmVersion;
+  MXC_EPDC_FB_DAMAGE_KO = if targetPlatform.rmVersion == 1
                           then "${linuxPackages.mxc_epdc_fb_damage}/lib/modules/${linuxPackages.kernel.modDirVersion}/drivers/fb/mxc_epdc_fb_damage.ko"
                           else "";
   installPhase = ''
