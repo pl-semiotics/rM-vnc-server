@@ -63,13 +63,13 @@ void process_ptr_event(int buttonMask, int x, int y, rfbClientPtr cl) {
     if (current_contact >= 0) {
       touch_end_contact(&idevs, current_contact); current_contact = -1;
     }
-    submit_wacom_event(&idevs,
-                       1, buttonMask & 1,
-                       (struct rM_coord){ RM_COORD_DISPLAY, x, y },
-                       4095,
-                       WHICH_WACOM_PEN|WHICH_WACOM_TOUCH|WHICH_WACOM_X|
-                       WHICH_WACOM_Y|WHICH_WACOM_PRESSURE);
   }
+  submit_wacom_event(&idevs,
+                     (buttonMask & 2) || (buttonMask & 1), buttonMask & 1,
+                     (struct rM_coord){ RM_COORD_DISPLAY, x, y },
+                     4095,
+                     WHICH_WACOM_PEN|WHICH_WACOM_TOUCH|WHICH_WACOM_X|
+                     WHICH_WACOM_Y|WHICH_WACOM_PRESSURE);
 }
 
 void process_kbd_event(rfbBool down, rfbKeySym sym, rfbClientPtr cl) {

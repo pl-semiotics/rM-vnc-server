@@ -41,14 +41,15 @@ which injects a damage-reporting stub into processes that use
 The VNC server also supports injecting input from the VNC clients into
 the reMarkable's input devices, using
 [rM-input-devices](https://github.com/pl-semiotics/rM-input-devices).
-Cursor movements with no buttons held are proxied as wacom stylus
-proximity; left-clicks are proxied as the wacom stylus in contact with
-the display at full pressure (allowing drawing); and right-clicks are
-proxied as multitouch events. Keyboard keys left/up/page up are sent
-as a left key, which moves back a page in the current notebook;
-right/down/page down similarly are sent as a right key to move forward
-a page. Home and escape are sent as the home key, which generally
-returns to the home page of xochitl.
+Cursor movements with button 3 active are sent to the tablet as touch
+events. Cursor movements with button 1 active are sent as wacom stylus
+contacts at full pressure (allowing rudimentary drawing). Cursor
+movements with button 2 active are sent as wacom stylus
+movement-within-proximity-but-without-contact events. Keyboard keys
+left/up/page up are sent as a left key, which moves back a page in the
+current notebook; right/down/page down similarly are sent as a right
+key to move forward a page. Home and escape are sent as the home key,
+which generally returns to the home page of xochitl.
 
 ## Cursor location reporting
 
