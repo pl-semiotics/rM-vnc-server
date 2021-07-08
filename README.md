@@ -115,3 +115,21 @@ Note that the server will bind to all available network interfaces by
 default, so only run this if the tablet's WiFi is disconnected or
 connected to a trusted network. iptables rules could be used to
 restrict traffic.
+
+Alternatively you can make the server listen on localhost only and use SSH port
+forwarding to encrypt the connection between your computer and the Remarkable.  
+This also prevents publicly exposing the unprotected VNC port.
+
+On the Remarkable start the server with `-listen localhost`:
+
+```sh
+/path/to/rM2-vnc-server-standalone -listen localhost
+```
+
+On your computer forward a local port via SSH to the VNC port:
+
+```sh
+ssh -NL localhost:5901:localhost:5900 root@<remarkable-ip>
+```
+
+Configure your VNC client to connect to `localhost:5901`.
